@@ -1,16 +1,54 @@
-# React + Vite
+# Ubuntu-Themed Personal Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to my personal portfolio website, designed to mimic the Ubuntu 22.04 LTS desktop environment. This project is built with React and aims to provide an interactive and unique user experience.
 
-Currently, two official plugins are available:
+## Project Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This is a single-page application (SPA) that functions like a desktop operating system.
+- **Desktop Environment**: A fully functional desktop shell with a wallpaper, top bar, and dock.
+- **Window Management**: Open, close, minimize, and maximize windows.
+- **File System**: A simulated file system to navigate through my portfolio content (documents, pictures, projects).
+- **Interactive Apps**: Includes a File Manager, Terminal, and placeholder applications.
 
-## React Compiler
+## Project Structure
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+The project follows a modular React architecture for maintainability and scalability.
 
-## Expanding the ESLint configuration
+```
+src/
+├── assets/             # Static assets (icons, wallpapers)
+├── components/         # Reusable UI components
+│   ├── Desktop/        # Main desktop shell and background
+│   ├── Taskbar/        # Dock application launcher
+│   ├── TopBar/         # System status panel
+│   ├── Window/         # Wrapper for draggable/resizable windows
+│   ├── FileExplorer/   # File manager application
+│   ├── Terminal/       # Interactive terminal simulator
+│   └── Icon/           # Desktop/File icons
+├── contexts/           # Global state (FileSystemContext)
+├── App.jsx             # Main Desktop Manager (handles window state)
+├── index.css           # Global theme variables (Ubuntu colors)
+└── index.js            # Entry point
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Getting Started
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+### Prerequisites
+- Node.js installed on your machine.
+
+### Installation
+
+1.  Clone the repository.
+2.  Install dependencies:
+    ```bash
+    npm install
+    ```
+
+### Available Scripts
+
+In the project directory, you can run:
+
+-   `npm start`: Runs the app in development mode at [http://localhost:3000](http://localhost:3000).
+-   `npm run build`: Builds the app for production to the `build` folder.
