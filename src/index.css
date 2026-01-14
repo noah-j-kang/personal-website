@@ -1,0 +1,35 @@
+:root {
+  --font-family: 'Ubuntu', 'Segoe UI', sans-serif;
+  --bg-color: #333333;
+  --text-color: #ffffff;
+
+  /* Ubuntu Yaru Colors */
+  --ubuntu-orange: #E95420;
+  --ubuntu-purple: #772953;
+  --ubuntu-bg-gradient: linear-gradient(135deg, #772953 0%, #2c001e 100%);
+  --dock-bg: rgba(0, 0, 0, 0.4);
+  --topbar-bg: #1d1d1d;
+  --window-bg: #f7f7f7;
+  --window-header-bg: #e1e1e1;
+  --text-dark: #333333;
+}
+
+* {
+  box-sizing: border-box;
+  user-select: none;
+  cursor: url('./assets/icons/left_ptr_small.png'), auto;
+}
+
+body,
+html,
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: var(--font-family);
+  background: url('./assets/wallpapers/22.04-LTS-Jammy-Jellyfish.png') no-repeat center center fixed;
+  background-size: cover;
+  color: var(--text-color);
+}

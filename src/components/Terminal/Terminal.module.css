@@ -1,0 +1,37 @@
+.terminal {
+    background-color: #300a24;
+    /* Ubuntu Terminal Color */
+    color: white;
+    font-family: 'Ubuntu Mono', monospace;
+    padding: 10px;
+    height: 100%;
+    overflow-y: auto;
+    font-size: 14px;
+}
+
+.output {
+    display: flex;
+    flex-direction: column;
+}
+
+.inputLine {
+    display: flex;
+    margin-top: 5px;
+}
+
+.prompt {
+    color: #8ae234;
+    /* Light green prompt */
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+.input {
+    background: transparent;
+    border: none;
+    color: white;
+    font-family: inherit;
+    font-size: inherit;
+    flex: 1;
+    outline: none;
+}
