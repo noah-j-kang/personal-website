@@ -2,8 +2,9 @@ import React from 'react';
 import { useFileSystem } from '../../contexts/FileSystemContext';
 import styles from './FileExplorer.module.css';
 import folderOpenIcon from '../../assets/icons/folder-open.png';
+import interviewIcon from '../../assets/icons/interview.png';
 
-const FileExplorer = () => {
+const FileExplorer = ({ onOpenFile }) => {
     const { files } = useFileSystem();
     const [currentFolderId, setCurrentFolderId] = React.useState('home');
     const [selectedIds, setSelectedIds] = React.useState([]);
@@ -31,6 +32,7 @@ const FileExplorer = () => {
             setCurrentFolderId(file.id);
             setSelectedIds([]);
         } else {
+            if (onOpenFile) onOpenFile(file);
             console.log(`Open file: ${file.name}`);
         }
     };
@@ -92,7 +94,8 @@ const FileExplorer = () => {
                                     <div className={styles.icon}>
                                         {file.type === 'folder' ?
                                             <img src={folderOpenIcon} alt="Folder" className={styles.fileIconImg} /> :
-                                            '📄'}
+                                            file.icon === 'interview' ? <img src={interviewIcon} alt="Interview" className={styles.fileIconImg} /> :
+                                                '📄'}
                                     </div>
                                     <div className={styles.name}>{file.name}</div>
                                 </div>

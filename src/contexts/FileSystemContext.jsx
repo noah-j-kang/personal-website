@@ -23,7 +23,7 @@ export const FileSystemProvider = ({ children }) => {
       name: 'Documents',
       type: 'folder',
       parent: 'home',
-      children: ['resume', 'notes']
+      children: ['interviews']
     },
     'pictures': {
       id: 'pictures',
@@ -46,8 +46,34 @@ export const FileSystemProvider = ({ children }) => {
       parent: 'home',
       children: ['website_v1']
     },
-    'resume': { id: 'resume', name: 'Resume.pdf', type: 'file', parent: 'documents' },
-    'notes': { id: 'notes', name: 'notes.txt', type: 'file', parent: 'documents' },
+    'interviews': {
+      id: 'interviews',
+      name: 'Interviews',
+      type: 'folder',
+      parent: 'documents',
+      children: ['file_2017', 'file_2023', 'file_2025']
+    },
+    'file_2017': {
+      id: 'file_2017',
+      name: '2017',
+      type: 'file',
+      icon: 'interview',
+      parent: 'interviews'
+    },
+    'file_2023': {
+      id: 'file_2023',
+      name: '2023',
+      type: 'file',
+      icon: 'interview',
+      parent: 'interviews'
+    },
+    'file_2025': {
+      id: 'file_2025',
+      name: '2025',
+      type: 'file',
+      icon: 'interview',
+      parent: 'interviews'
+    },
     'summer_trip': { id: 'summer_trip', name: 'Summer 2025', type: 'folder', parent: 'pictures', children: [] },
     'website_v1': { id: 'website_v1', name: 'Personal Site', type: 'folder', parent: 'projects', children: [] }
   });

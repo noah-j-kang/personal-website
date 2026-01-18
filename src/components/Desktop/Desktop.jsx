@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Window from '../Window/Window';
 import FileExplorer from '../FileExplorer/FileExplorer';
 import Terminal from '../Terminal/Terminal';
+import ChatApp from '../ChatApp/ChatApp';
 import styles from './Desktop.module.css';
 
 // Simple Window Manager Context (internal for now, could be hoisted)
@@ -13,7 +14,7 @@ import styles from './Desktop.module.css';
 // This file is just a container now?
 // Let's make Desktop the layout manager for windows.
 
-const Desktop = ({ windows, closeWindow, focusWindow }) => {
+const Desktop = ({ windows, closeWindow, focusWindow, onOpenFile }) => {
     return (
         <div className={styles.desktopContainer}>
             {windows.map(win => (
@@ -24,8 +25,9 @@ const Desktop = ({ windows, closeWindow, focusWindow }) => {
                     onClose={() => closeWindow(win.id)}
                     onClick={() => focusWindow(win.id)}
                 >
-                    {win.content === 'files' && <FileExplorer />}
+                    {win.content === 'files' && <FileExplorer onOpenFile={onOpenFile} />}
                     {win.content === 'terminal' && <Terminal />}
+                    {win.content === 'chat' && <ChatApp data={win.data} />}
                     {/* Default fallback */}
                     {!['files', 'terminal'].includes(win.content) && <div>Content for {win.title}</div>}
                 </Window>
