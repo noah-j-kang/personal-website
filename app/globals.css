@@ -1,26 +1,111 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-cyber-black: #09090b;
+  --color-cyber-grey: #a1a1aa;
+  --color-cyber-grid: #1f2937;
+  --color-cyber-border: #3f3f46;
+  --color-cyber-blue: #00f0ff;
+  --font-header: 'Silkscreen', monospace;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  background-color: var(--color-cyber-black);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: transparent;
+  color: var(--color-cyber-grey);
+  font-family: 'Space Mono', monospace;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+.crop-container {
+  width: 200px;
+  /* Set the desired width of the visible area */
+  height: 250px;
+  /* Set the desired height of the visible area */
+  overflow: hidden;
+  /* Hide anything outside the container */
+  position: relative;
+  /* Needed for positioning the child image */
+}
+
+.crop-container img {
+  position: absolute;
+  /* Allows precise positioning within the container */
+  top: 0;
+  /* Adjust these values to change the visible part of the image */
+  left: 0;
+  /* The image retains its original width and height, it is not scaled */
+}
+
+/* Background Effects */
+.grid-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  background-image:
+    linear-gradient(var(--color-cyber-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-cyber-grid) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+.scanlines {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.2) 50%);
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 100;
+}
+
+/* Brutalist Window Styling */
+.terminal-window {
+  background: var(--color-cyber-black);
+  border: 2px solid var(--color-cyber-border);
+  box-shadow: 6px 6px 0px var(--color-cyber-border);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.terminal-window:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0px var(--color-cyber-border);
+}
+
+/* Interactive Buttons */
+.cmd-btn {
+  background: transparent;
+  color: var(--color-cyber-blue);
+  border: 2px solid var(--color-cyber-border);
+  padding: 10px 20px;
+  font-family: 'Silkscreen', monospace;
+  text-transform: uppercase;
+  transition: all 0.2s;
+  display: inline-block;
+}
+
+.cmd-btn:hover {
+  background: var(--color-cyber-border);
+  color: var(--color-cyber-black);
 }
