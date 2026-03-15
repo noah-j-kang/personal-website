@@ -1,58 +1,51 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import p5 from "p5";
+// @ts-ignore - Vanta doesn't have official TypeScript types, so we ignore the warning
+import TOPOLOGY from "vanta/dist/vanta.topology.min";
 
 export default function VantaBackground() {
   const [vantaEffect, setVantaEffect] = useState<any>(null);
   const vantaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    let effect: any = null;
-    
-    // Safety timeout to ensure scripts initialized
-    const initVanta = () => {
+    // Only initialize if it hasn't been initialized yet and the ref exists
+    if (!vantaEffect && vantaRef.current) {
       try {
-        if (!vantaEffect && vantaRef.current) {
-          const VANTA = (window as any).VANTA;
-          if (VANTA && VANTA.TOPOLOGY) {
-            effect = VANTA.TOPOLOGY({
-              el: vantaRef.current,
-              mouseControls: true,
-              touchControls: true,
-              gyroControls: false,
-              minHeight: 200.00,
-              minWidth: 200.00,
-              scale: 1.00,
-              scaleMobile: 1.00,
-              color: 0x00f0ff,
-              backgroundColor: 0x09090b,
-            });
-            setVantaEffect(effect);
-          } else {
-            console.error("VANTA.TOPOLOGY not found on window object.");
-          }
-        }
-      } catch (error: any) {
+        const effect = TOPOLOGY({
+          el: vantaRef.current,
+          p5: p5, // We explicitly pass the p5 library to Vanta here
+          mouseControls: true,
+          touchControls: true,
+          gyroControls: false,
+          minHeight: 200.00,
+          minWidth: 200.00,
+          scale: 1.00,
+          scaleMobile: 1.00,
+          color: 0x06c0cc,
+          backgroundColor: 0x09090b,
+          backgroundAlpha: 0.0,
+        });
+        setVantaEffect(effect);
+      } catch (error) {
         console.error("[VantaBackground] Initialization failed:", error);
       }
-    };
-
-    // Small delay allows beforeInteractive scripts to fully parse if they hadn't yet
-    const timeout = setTimeout(initVanta, 100);
+    }
 
     return () => {
-      clearTimeout(timeout);
-      if (effect) {
-        effect.destroy();
+      // Clean up the effect when the component unmounts
+      if (vantaEffect) {
+        vantaEffect.destroy();
       }
     };
   }, [vantaEffect]);
 
   return (
-    <div 
-      ref={vantaRef} 
+    <div
+      ref={vantaRef}
       className="fixed inset-0 w-full h-full pointer-events-auto"
-      style={{ zIndex: -1 }}
+      style={{ zIndex: 0 }}
     />
   );
 }

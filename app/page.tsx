@@ -13,9 +13,9 @@ export default function Home() {
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className="font-header text-cyber-blue text-xl tracking-tighter">NOAH_KANG_OS_v1.0</div>
           <div className="hidden md:flex space-x-8 font-header text-xs text-cyber-grey">
-            <a href="#bio" className="hover:text-cyber-blue transition-colors">[ STORY ]</a>
-            <a href="#experience" className="hover:text-cyber-blue transition-colors">[ JOURNEY ]</a>
-            <a href="#projects" className="hover:text-cyber-blue transition-colors">[ CRAFT ]</a>
+            <a href="#bio" className="hover:text-cyber-blue transition-colors">[ BIO ]</a>
+            <a href="#experience" className="hover:text-cyber-blue transition-colors">[ EXPERIENCES ]</a>
+            <a href="#projects" className="hover:text-cyber-blue transition-colors">[ PROJECTS ]</a>
           </div>
         </div>
       </nav>
@@ -24,12 +24,16 @@ export default function Home() {
 
         {/* Bio Section */}
         <section id="bio" className="flex flex-col lg:flex-row items-start gap-8">
-          <TerminalWindow title="BIO_PROMPT.EXE" className="w-full lg:w-2/3">
+          <TerminalWindow title="BIO.EXE" className="w-full lg:w-2/3">
             <h1 className="font-header text-4xl md:text-5xl text-cyber-blue mb-6 leading-tight">
-              HELLO, I&apos;M <br /> NOAH KANG.
+              Hello! I&apos;M <br /> NOAH KANG.
             </h1>
+            <div className="flex flex-wrap gap-4 mb-8">
+              <div className="cmd-btn text-xs">Math &amp; CS @ UIUC</div>
+              <div className="cmd-btn text-xs">Class of 2028</div>
+            </div>
             <p className="text-sm md:text-base mb-8 leading-relaxed max-w-xl">
-              MATH & CS STUDENT AT UIUC. FOCUSING ON ARTIFICIAL INTELLIGENCE AND EMBEDDED SYSTEMS. BUILDING INTELLIGENT TOOLS WITH A CRAFTSMAN&apos;S SOUL.
+              Welcome to my portfolio!
             </p>
             <div className="flex gap-4">
               <a href="#" className="cmd-btn text-xs">&gt; CONTACT_ME</a>
@@ -37,7 +41,7 @@ export default function Home() {
             </div>
           </TerminalWindow>
 
-          <TerminalWindow title="USER_IMG.JPG" className="w-full lg:w-1/3">
+          <TerminalWindow title="USER_IMG.PNG" className="w-full lg:w-1/3">
             <div className="aspect-square bg-cyber-grid border border-cyber-border flex items-center justify-center text-xs opacity-50">
               <div className="crop-container">
                 <img src="profpic.png" alt="Description of image"></img>
@@ -48,8 +52,8 @@ export default function Home() {
 
         {/* Experience Section */}
         <section id="experience">
-          <TerminalWindow title="JOURNEY_LOG.BAT" className="w-full md:w-5/6 ml-auto">
-            <h2 className="font-header text-2xl text-cyber-blue mb-8">PROFESSIONAL JOURNEY</h2>
+          <TerminalWindow title="EXPERIENCES.BAT" className="w-full md:w-5/6 ml-auto">
+            <h2 className="font-header text-2xl text-cyber-blue mb-8">EXPERIENCES</h2>
             <ul className="space-y-8">
               {experienceData.map((exp) => (
                 <li key={exp.id} className="border-l-2 border-cyber-border pl-6">
@@ -70,7 +74,7 @@ export default function Home() {
         {/* Projects Section */}
         <section id="projects">
           <div className="text-center mb-12">
-            <h2 className="font-header text-3xl text-cyber-blue inline-block border-b-2 border-cyber-blue pb-2">SYSTEM_CRAFTS</h2>
+            <h2 className="font-header text-3xl text-cyber-blue inline-block border-b-2 border-cyber-blue pb-2">PROJECTS</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {projectsData.map((project) => (
@@ -87,8 +91,8 @@ export default function Home() {
 
         {/* Coursework Section */}
         <section id="coursework">
-          <TerminalWindow title="ACADEMIC_RECORDS.CSV" className="w-full md:w-3/4">
-            <h2 className="font-header text-2xl text-cyber-blue mb-6">LIBRARY BOARD</h2>
+          <TerminalWindow title="COURSEWORK.CSV" className="w-full md:w-3/4">
+            <h2 className="font-header text-2xl text-cyber-blue mb-6">COURSEWORK</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {courseworkData.map((course) => (
                 <div key={course.id} className="border border-cyber-border p-4 hover:bg-cyber-border/10 transition-colors">
